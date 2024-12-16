@@ -10,7 +10,7 @@ interface AppProps {
 function App({ children }: AppProps): JSX.Element {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      {/* <ModeToggle /> */}
+      <ModeToggle />
       <Contracts />
       {children}
     </ThemeProvider>
