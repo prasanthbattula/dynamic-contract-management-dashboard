@@ -100,7 +100,7 @@ export const getContractFormConfig = ({ control }: { control: Control }) => {
 };
 
 interface GetColumnProps {
-  onEdit: () => void;
+  onEdit: (id: string) => void;
 }
 
 export const getColumns = ({ onEdit }: GetColumnProps) => {
