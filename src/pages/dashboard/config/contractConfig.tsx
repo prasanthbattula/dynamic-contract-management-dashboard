@@ -10,7 +10,7 @@ import {
 import { Control } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown, EditIcon } from "lucide-react";
-import { Column } from "@tanstack/react-table";
+import { Column, Row } from "@tanstack/react-table";
 import { ContractItem } from "@/types/types";
 
 export const getContractFormConfig = ({ control }: { control: Control }) => {
@@ -118,7 +118,21 @@ export const getColumns = ({ onEdit }: GetColumnProps) => {
           </Button>
         );
       },
+      cell: ({ row: { original } }: { row: Row<ContractItem> }) => {
+        const { id = "", name = "" } = original;
+        return (
+          <span
+            className="cursor-pointer font-bold"
+            onClick={() => {
+              onEdit(id);
+            }}
+          >
+            {name}
+          </span>
+        );
+      },
     },
+
     {
       accessorKey: "type",
       header: ({ column }: { column: Column<ContractItem, unknown> }) => {
