@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { initialContracts } from "@/constants/constants";
 import { ContractItem, Status } from "@/types/types";
 import { createContext, ReactNode, useState } from "react";
@@ -8,13 +9,19 @@ interface ContractContextProps {
   add: (data: ContractItem) => void;
   update: ({ id, data }: { id: string; data: ContractItem }) => void;
   remove: (id: string) => void;
-  getContract: (id: string) => void;
+  getContract: (id: string) => any;
+  updateState: ({ id, status }: { id: string; status: Status }) => void;
 }
 
 // Create the context
-const ContractContext = createContext<ContractContextProps | undefined>(
-  undefined
-);
+const ContractContext = createContext<ContractContextProps>({
+  data: undefined,
+  add: () => {},
+  update: () => {},
+  remove: () => {},
+  getContract: () => {},
+  updateState: () => {},
+});
 
 export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<Array<ContractItem>>(initialContracts);

@@ -13,7 +13,7 @@ type DropdownField = {
   label: string;
   controlType: string;
   control: Control;
-  options: Array<dropdownItem>;
+  options?: Array<dropdownItem>;
 };
 
 type DatePickerField = {

@@ -5,6 +5,7 @@ import { DataTable } from "@/components/ui/data-table";
 import ContractsAddorEditForm from "./ContractAddorEditForm";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/Mode";
+import { ContractItem } from "@/types/types";
 
 const ContractsList = () => {
   const { data } = useContext(ContractContext);
@@ -17,7 +18,7 @@ const ContractsList = () => {
   };
 
   const onEditPopupClose = () => {
-    setSelectedContract(null);
+    setSelectedContract("");
     setOpenEditPopup(false);
   };
 
@@ -26,13 +27,14 @@ const ContractsList = () => {
   };
 
   const columns = useMemo(() => getColumns({ onEdit }), []);
+
   return (
     <div className="max">
       <div className="flex flex-row justify-between py-4">
         <Button onClick={onCreate}>Genereate New Contract</Button>
         <ModeToggle />
       </div>
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data as ContractItem[]} />
       {openEditPopup && (
         <ContractsAddorEditForm
           open={openEditPopup}

@@ -1,5 +1,3 @@
-import { ColumnDef } from "@tanstack/react-table";
-
 import {
   clients,
   contractTypes,
@@ -10,9 +8,10 @@ import {
   transportModes,
 } from "@/constants/constants";
 import { Control } from "react-hook-form";
-import { ContractItem } from "@/types/types";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown, Edit, Edit2Icon, EditIcon, Pen } from "lucide-react";
+import { ArrowUpDown, EditIcon } from "lucide-react";
+import { Column } from "@tanstack/react-table";
+import { ContractItem } from "@/types/types";
 
 export const getContractFormConfig = ({ control }: { control: Control }) => {
   const list = [
@@ -28,18 +27,6 @@ export const getContractFormConfig = ({ control }: { control: Control }) => {
       label: "Contract Type",
       control,
       options: contractTypes || [],
-    },
-    {
-      controlType: "date",
-      name: "startDate",
-      label: "Start Date",
-      control,
-    },
-    {
-      controlType: "date",
-      name: "endDate",
-      label: "End Date",
-      control,
     },
     {
       controlType: "dropdown",
@@ -108,21 +95,19 @@ export const getContractFormConfig = ({ control }: { control: Control }) => {
       label: "Goods Weight",
       control,
     },
-    // {
-    //   controlType: "checkbox",
-    //   name: "dangerous",
-    //   label: "Dangerous Goods",
-    //   control,
-    // },
   ];
   return list;
 };
 
-export const getColumns = ({ onEdit }: any) => {
+interface GetColumnProps {
+  onEdit: () => void;
+}
+
+export const getColumns = ({ onEdit }: GetColumnProps) => {
   return [
     {
       accessorKey: "name",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -136,7 +121,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "type",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -149,36 +134,8 @@ export const getColumns = ({ onEdit }: any) => {
       },
     },
     {
-      accessorKey: "startDate",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Start Date
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        );
-      },
-    },
-    {
-      accessorKey: "endDate",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            End Date
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        );
-      },
-    },
-    {
       accessorKey: "client",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -192,7 +149,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "carrier",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -206,7 +163,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "transportMode",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -220,7 +177,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "serviceType",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -234,7 +191,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "origin",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -248,7 +205,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "destination",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -262,7 +219,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "paymentTerms",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -276,7 +233,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "price",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -290,7 +247,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "currency",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"
@@ -308,7 +265,7 @@ export const getColumns = ({ onEdit }: any) => {
     },
     {
       accessorKey: "status",
-      header: ({ column }) => {
+      header: ({ column }: { column: Column<ContractItem, unknown> }) => {
         return (
           <Button
             variant="ghost"

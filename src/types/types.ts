@@ -19,8 +19,6 @@ export interface ContractItem {
   type: ContractType;
   transportMode: TransportMode;
   serviceType: ServiceType;
-  startDate: string;
-  endDate: string;
   client: string;
   carrier: string;
   origin: string;

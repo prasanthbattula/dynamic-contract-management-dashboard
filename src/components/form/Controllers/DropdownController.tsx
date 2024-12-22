@@ -4,8 +4,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { DropdownField, dropdownItem } from "../FormTypesAndConstants";
+import { DropdownField } from "../FormTypesAndConstants";
 import {
   Select,
   SelectContent,
@@ -13,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { dropdownItem } from "@/types/types";
 
 const DropdownController = (props: DropdownField) => {
   const { name, label, control, options } = props;

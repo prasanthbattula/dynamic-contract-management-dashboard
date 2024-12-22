@@ -6,7 +6,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { useForm } from "react-hook-form";
 
@@ -17,8 +16,7 @@ import { FormGenerator } from "@/components/form/FormGenerator";
 import ContractContext from "@/context/contractContext";
 
 const ContractsAddorEditForm = ({ id, onClose, open }: any) => {
-  const { data, add, update, getContract, updateState } =
-    useContext(ContractContext);
+  const { add, update, getContract, updateState } = useContext(ContractContext);
 
   const form = useForm({
     mode: "all",
@@ -29,7 +27,7 @@ const ContractsAddorEditForm = ({ id, onClose, open }: any) => {
     e?.preventDefault();
     handleSubmit((formData: any) => {
       if (id) {
-        update({ id, data: formData });
+        update?.({ id, data: formData });
       } else {
         add(formData);
       }
@@ -37,14 +35,14 @@ const ContractsAddorEditForm = ({ id, onClose, open }: any) => {
     })();
   };
 
-  const config = useMemo(() => getContractFormConfig(control), [control]);
+  const config = useMemo(() => getContractFormConfig({ control }), [control]);
 
   useEffect(() => {
     const contractData = getContract(id);
     reset(contractData);
-    // return () => {
-    //   reset({});
-    // };
+    return () => {
+      reset({});
+    };
   }, [id]);
 
   return (
