@@ -1,10 +1,11 @@
-import ContractsAddorEditForm from "./ContractAddorEditForm";
+import { ContractProvider } from "@/context/contractContext";
+import ContractsList from "./ContractsList";
 
 const Contracts = () => {
   return (
-    <div>
-      <ContractsAddorEditForm />
-    </div>
+    <ContractProvider>
+      <ContractsList />
+    </ContractProvider>
   );
 };
 

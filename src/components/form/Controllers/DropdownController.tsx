@@ -32,7 +32,9 @@ const DropdownController = (props: DropdownField) => {
             </FormControl>
             <SelectContent>
               {options?.map((item: dropdownItem) => (
-                <SelectItem value={item?.value}>{item?.label}</SelectItem>
+                <SelectItem key={item?.value} value={item?.value}>
+                  {item?.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>

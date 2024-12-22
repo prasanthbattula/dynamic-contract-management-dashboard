@@ -1,9 +1,5 @@
+import { dropdownItem } from "@/types/types";
 import { Control } from "react-hook-form";
-
-export type dropdownItem = {
-  label: string;
-  value: string;
-};
 
 type InputFormField = {
   name: string;
@@ -20,6 +16,30 @@ type DropdownField = {
   options: Array<dropdownItem>;
 };
 
-type FormFieldConfig = InputFormField | DropdownField;
+type DatePickerField = {
+  name: string;
+  label: string;
+  controlType: string;
+  control: Control;
+};
 
-export type { FormFieldConfig, InputFormField, DropdownField };
+type CheckboxField = {
+  name: string;
+  label: string;
+  controlType: string;
+  control: Control;
+};
+
+type FormFieldConfig =
+  | InputFormField
+  | DropdownField
+  | DatePickerField
+  | CheckboxField;
+
+export type {
+  FormFieldConfig,
+  InputFormField,
+  DropdownField,
+  DatePickerField,
+  CheckboxField,
+};

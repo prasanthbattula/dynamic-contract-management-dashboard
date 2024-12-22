@@ -17,7 +17,7 @@ const InputController = (props: InputFormField) => {
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input placeholder="shadcn" {...field} />
+            <Input placeholder="" {...field} />
           </FormControl>
         </FormItem>
       )}
