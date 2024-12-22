@@ -12,3 +12,6 @@
 
 **Localhost URL**
 http://localhost:5173/
+
+**Public URL**
+https://tractus-assignment.netlify.app/
