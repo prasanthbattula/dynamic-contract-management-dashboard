@@ -9,7 +9,7 @@ interface AppProps {
 
 function App({ children }: AppProps): JSX.Element {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="theme">
+    <ThemeProvider defaultTheme="system" storageKey="theme">
       <Contracts />
       {children}
     </ThemeProvider>
