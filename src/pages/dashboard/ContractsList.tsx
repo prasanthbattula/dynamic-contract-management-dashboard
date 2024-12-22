@@ -29,19 +29,21 @@ const ContractsList = () => {
   const columns = useMemo(() => getColumns({ onEdit }), []);
 
   return (
-    <div className="max">
-      <div className="flex flex-row justify-between py-4">
+    <div>
+      <div className="flex flex-row justify-between py-4 w-max gap-4 md:w-full">
         <Button onClick={onCreate}>Genereate New Contract</Button>
         <ModeToggle />
       </div>
-      <DataTable columns={columns} data={data as ContractItem[]} />
-      {openEditPopup && (
-        <ContractsAddorEditForm
-          open={openEditPopup}
-          onClose={onEditPopupClose}
-          id={selectedContract}
-        />
-      )}
+      <div className="max">
+        <DataTable columns={columns} data={data as ContractItem[]} />
+        {openEditPopup && (
+          <ContractsAddorEditForm
+            open={openEditPopup}
+            onClose={onEditPopupClose}
+            id={selectedContract}
+          />
+        )}
+      </div>
     </div>
   );
 };

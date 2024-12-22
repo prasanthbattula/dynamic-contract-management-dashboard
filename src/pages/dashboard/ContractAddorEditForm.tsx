@@ -61,53 +61,56 @@ const ContractsAddorEditForm = ({ id, onClose, open }: any) => {
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={onSubmit} className="space-y-8">
-            <div className="grid grid-cols-3 grid-flow-row gap-4 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-4 mt-4">
               <FormGenerator configForm={config} />
             </div>
             <div className="flex flex-row justify-between">
-              {id && (
-                <div className="flex flex-row gap-2">
-                  <Button
-                    variant="secondary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      updateState({ id, status: "DRAFT" });
-                      onClose();
-                    }}
-                  >
-                    Mark as Draft
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      updateState({ id, status: "PROCESSED" });
-                      onClose();
-                    }}
-                  >
-                    Mark as PROCESSED
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      updateState({ id, status: "SUBMITTED" });
-                      onClose();
-                    }}
-                  >
-                    Mark as SUBMITTED
-                  </Button>
-                  <Button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      updateState({ id, status: "ACCEPTED" });
-                      onClose();
-                    }}
-                  >
-                    ACCEPT
-                  </Button>
-                </div>
-              )}
+              <div>
+                {id && (
+                  // These buttons are placed to update the status of contract because there is no backend. Once updated, immediately it will reflect in the table
+                  <div className="flex flex-row gap-2">
+                    <Button
+                      variant="secondary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateState({ id, status: "DRAFT" });
+                        onClose();
+                      }}
+                    >
+                      Mark as Draft
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateState({ id, status: "PROCESSED" });
+                        onClose();
+                      }}
+                    >
+                      Mark as Processed
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateState({ id, status: "SUBMITTED" });
+                        onClose();
+                      }}
+                    >
+                      Mark as Submitted
+                    </Button>
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateState({ id, status: "ACCEPTED" });
+                        onClose();
+                      }}
+                    >
+                      Accept
+                    </Button>
+                  </div>
+                )}
+              </div>
 
               <DialogFooter className="flex flex-row justify-between">
                 <Button type="submit">Save changes</Button>
